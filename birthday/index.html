@@ -1,0 +1,330 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Happy Birthday Kaja</title>
+<link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@600;700&family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+<style>
+:root{--pink:#ff4f8b;--pink2:#ffb3cd;--bg:#140810;--txt:#fff3f7}
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{font-family:Poppins,sans-serif;background:var(--bg);color:var(--txt);overflow-x:hidden}
+h1,h2,.script{font-family:'Dancing Script',cursive}
+section{position:relative;min-height:100vh;padding:70px 16px;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;overflow:hidden;
+  background:radial-gradient(circle at 20% 15%,hsl(var(--h,330) 65% 20%),var(--bg) 70%)}
+.btn{background:var(--pink);color:#fff;border:0;padding:12px 26px;border-radius:30px;font:600 16px Poppins;cursor:pointer;box-shadow:0 6px 20px #ff4f8b66;transition:.2s;position:relative;z-index:2}
+.btn:hover{transform:translateY(-2px) scale(1.03)}
+
+/* interactive emoji layer (every page) */
+.fx{position:absolute;inset:0;z-index:0}
+.fx b{position:absolute;font-size:30px;cursor:pointer;user-select:none;animation:bob var(--d) ease-in-out infinite alternate;opacity:.55;transition:opacity .2s,transform .2s;font-weight:400}
+.fx b:hover{opacity:1;transform:scale(1.4)}
+.fx b.gone{transform:scale(2.5)!important;opacity:0!important}
+@keyframes bob{from{translate:0 0;rotate:-10deg}to{translate:var(--x) var(--y);rotate:12deg}}
+.spark{position:fixed;pointer-events:none;z-index:80;font-size:20px;transition:transform .9s ease-out,opacity .9s}
+section>*:not(.fx){position:relative;z-index:1}
+
+/* progress bar */
+#prog{position:fixed;top:0;left:0;height:4px;background:linear-gradient(90deg,#ff9a3c,var(--pink));z-index:40;width:0}
+#prog:after{content:"🏍️";position:absolute;right:-14px;top:-12px;font-size:20px}
+
+/* LOCK */
+#lock{position:fixed;inset:0;z-index:50;background:radial-gradient(circle at 50% 30%,#4a1530,#140810);display:flex;flex-direction:column;align-items:center;justify-content:center;padding:16px;text-align:center;transition:opacity .8s,transform .8s}
+#lock.open{opacity:0;transform:scale(1.2);pointer-events:none}
+#lock>*:not(.fx){position:relative;z-index:1}
+.lock-icon{font-size:64px;animation:beat 1.2s infinite}
+@keyframes beat{50%{transform:scale(1.15)}}
+#lock h2{font-size:40px;margin:10px 0}
+.dots{display:flex;gap:12px;margin:20px 0}
+.dots i{width:16px;height:16px;border-radius:50%;border:2px solid var(--pink2)}
+.dots i.f{background:var(--pink)}
+.pad{display:grid;grid-template-columns:repeat(3,70px);gap:14px}
+.pad button{height:70px;border-radius:50%;border:1px solid #ffffff33;background:#ffffff12;color:#fff;font:400 24px Poppins;cursor:pointer}
+.pad button:active{background:var(--pink)}
+.shake{animation:shake .4s}
+@keyframes shake{25%{transform:translateX(-10px)}75%{transform:translateX(10px)}}
+#msg{min-height:24px;margin-top:14px;color:var(--pink2)}
+
+/* HERO */
+.pair{display:flex;align-items:center;gap:10px;margin:30px 0;flex-wrap:wrap;justify-content:center}
+.photo{width:160px;height:160px;border-radius:50%;object-fit:cover;border:4px solid var(--pink);box-shadow:0 0 30px #ff4f8b88;background:#2a1220}
+.pair .h{font-size:40px;animation:beat 1s infinite}
+#hero h1{font-size:clamp(46px,10vw,96px);color:var(--pink);text-shadow:0 0 25px #ff4f8b88}
+#hero p{max-width:560px;font-size:18px;opacity:.9}
+
+/* CHAPTERS */
+.wrap{display:flex;align-items:center;gap:50px;max-width:980px;width:100%;justify-content:center}
+.wrap.rev{flex-direction:row-reverse}
+.txt{flex:1;text-align:left;max-width:440px;opacity:0;transform:translateY(40px);transition:1s}
+.num{display:inline-block;font-size:12px;letter-spacing:3px;text-transform:uppercase;color:var(--pink2);border:1px solid #ffb3cd55;padding:4px 12px;border-radius:20px}
+.txt h2{font-size:clamp(34px,6vw,52px);color:var(--pink);margin:10px 0;line-height:1.1}
+.txt p{font-size:17px;line-height:1.8;opacity:.92}
+.ems{font-size:28px;margin-top:14px;letter-spacing:6px}
+.show .txt,.show .stack{opacity:1;transform:none}
+@media(max-width:760px){.wrap,.wrap.rev{flex-direction:column;gap:34px}.txt{text-align:center}}
+
+/* polaroids (photo-edit look) */
+.stack{position:relative;width:min(320px,78vw);aspect-ratio:.85;opacity:0;transform:scale(.8) rotate(-6deg);transition:1s .2s;cursor:pointer}
+.pol{position:absolute;inset:0;background:#fffaf4;padding:12px 12px 52px;border-radius:4px;box-shadow:0 14px 40px #000a;transition:transform .6s cubic-bezier(.3,1.4,.5,1),opacity .4s}
+.pol:before{content:"";position:absolute;top:-12px;left:50%;width:90px;height:26px;background:#ffd6e5bb;transform:translateX(-50%) rotate(-3deg);box-shadow:0 2px 4px #0002;z-index:2}
+.pol .ph{position:relative;width:100%;height:100%;overflow:hidden;background:#2a1220}
+.pol img{width:100%;height:100%;object-fit:cover;filter:saturate(1.15) contrast(1.06) brightness(1.03) sepia(.08);animation:kb 14s ease-in-out infinite alternate}
+@keyframes kb{to{transform:scale(1.12) translate(-2%,-2%)}}
+.pol .ph:after{content:"";position:absolute;inset:0;box-shadow:inset 0 0 50px #0006;background:linear-gradient(135deg,#ff9a3c14,#ff4f8b14)}
+.pol .cap{position:absolute;bottom:10px;left:0;right:0;text-align:center;font:700 22px 'Dancing Script';color:#7a2347}
+.pol.fly{transform:translateX(130%) rotate(25deg)!important;opacity:0}
+.empty .ph{display:flex;align-items:center;justify-content:center;color:#7a2347;font-size:14px;padding:16px;text-align:center;flex-direction:column;gap:16px;background:linear-gradient(160deg,#ffe3ee,#ffd0c2)}
+.empty .ph:after{display:none}
+.empty .big{font-size:52px;letter-spacing:6px;animation:beat 2s infinite}
+.empty em{font-style:normal;line-height:1.6}
+/* random moments wall */
+.grp{width:100%;max-width:1000px;margin-top:40px}
+.grp h3{font:700 clamp(30px,5vw,42px) 'Dancing Script';color:var(--pink2)}
+.grp p{opacity:.85}
+.wall{display:flex;flex-wrap:wrap;justify-content:center;gap:18px;margin-top:22px}
+.mini{width:min(200px,42vw);background:#fffaf4;padding:8px 8px 26px;border-radius:3px;box-shadow:0 10px 26px #000a;transform:rotate(var(--r));transition:transform .4s;cursor:pointer}
+.mini:hover{transform:rotate(0) scale(1.08);z-index:2}
+.mini img{width:100%;aspect-ratio:1;object-fit:cover;display:block;filter:saturate(1.15) contrast(1.06) sepia(.08)}
+.tap{font-size:12px;opacity:.6;margin-top:10px}
+
+/* CAKE */
+.cake-wrap{position:relative;width:260px;height:260px;margin:40px auto 20px;cursor:pointer}
+.half{position:absolute;inset:0;transition:transform 1s}
+.half.l{clip-path:inset(-60px 50% 0 0)}.half.r{clip-path:inset(-60px 0 0 50%)}
+.cut .half.l{transform:translateX(-24px) rotate(-5deg)}.cut .half.r{transform:translateX(24px) rotate(5deg)}
+.plate{position:absolute;bottom:0;left:-10px;width:280px;height:22px;background:#eee;border-radius:50%}
+.layer{position:absolute;left:20px;width:220px;border-radius:14px}
+.l1{bottom:12px;height:80px;background:#ff7aa8}
+.l2{bottom:88px;height:70px;left:40px;width:180px;background:#ffc0d6}
+.icing{position:absolute;top:-6px;left:0;right:0;height:18px;background:#fff;border-radius:10px}
+.cake-name{position:absolute;bottom:26px;left:0;right:0;font:700 26px 'Dancing Script';color:#fff}
+.candles{position:absolute;bottom:158px;left:0;right:0;display:flex;justify-content:center;gap:22px}
+.candle{width:12px;height:46px;background:repeating-linear-gradient(45deg,#fff 0 6px,#5ec8ff 6px 12px);border-radius:3px;position:relative}
+.flame{position:absolute;top:-24px;left:-3px;width:18px;height:24px;background:radial-gradient(#fff6a8,#ffae00 60%,#ff4d00);border-radius:50% 50% 50% 50%/60% 60% 40% 40%;animation:flick .15s infinite alternate;box-shadow:0 0 20px #ffae00}
+@keyframes flick{to{transform:scale(.9,1.08) rotate(3deg)}}
+.out .flame{display:none}
+.out .candle:after{content:"";position:absolute;top:-30px;left:2px;width:8px;height:30px;background:#ccc6;border-radius:50%;filter:blur(3px);animation:smoke 2s forwards}
+@keyframes smoke{to{transform:translateY(-40px);opacity:0}}
+.knife{position:absolute;top:-80px;left:50%;font-size:70px;transform:translateX(-50%) rotate(-135deg);opacity:0;z-index:5;pointer-events:none}
+.cutting .knife{animation:knife 1.2s forwards}
+@keyframes knife{0%{opacity:1;top:-90px}60%{opacity:1;top:120px}100%{opacity:0;top:120px}}
+#cakeMsg{font-size:20px;min-height:60px;max-width:480px}
+
+/* LETTER */
+.letter{max-width:640px;background:#fff5f8;color:#5a1a33;padding:30px 24px;border-radius:16px;text-align:left;line-height:1.8;box-shadow:0 10px 40px #0008;white-space:pre-line}
+.letter .script{font-size:30px;color:var(--pink);display:block;margin-bottom:8px}
+h2.t{font-size:clamp(38px,7vw,60px);color:var(--pink);margin-bottom:10px}
+canvas#cf{position:fixed;inset:0;pointer-events:none;z-index:60}
+#lightbox{position:fixed;inset:0;background:#000e;display:none;align-items:center;justify-content:center;z-index:70;padding:16px}
+#lightbox img{max-width:100%;max-height:90vh;border-radius:8px}
+#mus{position:fixed;right:16px;bottom:16px;z-index:45;width:48px;height:48px;border-radius:50%;border:0;background:var(--pink);font-size:22px;cursor:pointer;display:none;box-shadow:0 4px 16px #0008}
+</style>
+</head>
+<body>
+<!-- =====================================================================
+  👇 IKKADA NEE DETAILS MARCHU (only this CONFIG part edit cheyyi) 👇
+  Photos: photos/<chapter-folder>/ lo 1.jpg, 2.jpg, 3.jpg ga pettu
+  (jpg / jpeg / png / webp edaina okay). Song: music/song.mp3
+====================================================================== -->
+<script>
+const CONFIG = {
+  herName: "Kaja",
+  myName: "Satya",                // 👈 nee peru / aame ninnu pilichey peru
+  passcode: "236985",             // 👈 lock code
+  hint: "Hint: Satya cheppina secret number 😉 (6 digits)",
+  heroLine: "Ee roju nuvvu puttav, anduke naa life lo inni colors unnayi 💖",
+  chapters: [
+    {f:"01-mahesh-party", e:["🍽️","🥄","🍖","😂"], t:"Mahesh Party lo Modalu",
+     x:"Mahesh dinner party lo nee pakkana kurchunna. 'Em tintav?' ani adiga, 'nenu kuda adhe tinta' annanu 😌 Tarvatha mutton ni spoon tho tinadaniki try chesa... nuvvu navvav. Aa navvu tho ne mana story start ayyindi 💕"},
+    {f:"02-madam-sir-reel", e:["🎬","🎵","📱","😄"], t:"Madam Sir, Madam Sir 🎬",
+     x:"Ala Vaikunthapurramuloo 'Madam Sir Madam Sir' tho neekosam oka reel chesa. Adhi chusi nuvvu navvina navvu inka naa kallalo undi 😄"},
+    {f:"03-first-hug", e:["🤗","💞","🛣️","✨"], t:"First Hug — Shortcut lo",
+     x:"Hyderamandi ki shortcut lo veltunnappudu mana first hug 🤗 Aa shortcut naa life lo best route 😌"},
+    {f:"04-late-nights", e:["🌙","⏰","💬","✨"], t:"10:30 to 11... tarvatha 12 😜",
+     x:"Modata 10:30 nunchi 11 daaka okka gante kalisi undevallam. Tarvatha adhi 10:30 to 12 ayyindi... time ela gadichindo assalu teliyaledu ⏰💕"},
+    {f:"05-4am-biryani", e:["🏍️","🍛","🌃","🌙"], t:"First Ride — 4 AM Biryani",
+     x:"Mana first ride, 4 AM biryani kosam 🏍️🍛 Akkada nuvvu annav — '3 years ga nenu ekkadiki vellaledu' ani. Appude fix ayya — kanisam ee ammayini ekkadaina tiskuni vellali ani 💪"},
+    {f:"06-butter-chicken-kiss", e:["🍗","💋","😳","🔥"], t:"Butter Chicken & First Kiss",
+     x:"Butter chicken tintu undaga... nuvvu kiss chesav 😳💋 Aa taste inka marchipoledu 😋"},
+    {f:"07-sankranti-godava", e:["🪁","😤","🙈","🏠"], t:"Sankranti Mundu Godava",
+     x:"Sankranti mundu bayataki veldam ante nuvvu raaledu. 'Vastava rava' ani godava pettukoni alage intiki vellipoya 😤 Ippudu talchukunte navvu vastundi 🙈"},
+    {f:"08-kayaking", e:["🛶","🌊","💦","🤩"], t:"First Adventure — Kayaking",
+     x:"Mana first adventure kayaking! Nuvvu antha excite avvadam chusi naaku inka happy ga anipinchindi 🛶✨"},
+    {f:"09-milano-icecream", e:["🍦","🍨","😋","💗"], t:"First Ice Cream — Milano",
+     x:"Milano lo mana first ice cream 🍦 Chala sweet ga undhi... kani nee antha kaadu le 😌"},
+    {f:"10-first-message", e:["💬","📱","💌","☺️"], t:"Nuvvu Pampina First Msg",
+     x:"'Hi, ela undi neeku?' — nuvvu pampina first message 💬 Chinna msg, kani naaku chala pedda feeling 💕"},
+    {f:"11-almost-ending", e:["💔","🌧️","🥀","😔"], t:"Almost Ending...",
+     x:"Konni rojula tarvatha nenu taagi, 'interest ledu' adi idi ani call chesa 🤦 Next day nuvvu maa PG daggariki vachi 'vidipodam' annav. Inka ayipoyindi anukunna 💔"},
+    {f:"12-magic-restart", e:["✨","🪄","🌈","💞"], t:"Malli Restart — Like Magic",
+     x:"Malli ela restart chesamo naaku ippatiki teliyadu ✨ Malli maa PG ki raavadam, kalisi undadam, ninnu office ki drop cheyyadam... It's like magic, unbelievable 🪄"},
+    {f:"13-temples-dinners", e:["🛕","🍽️","📍","🌟"], t:"Temples, Dinners, Kotha Spots",
+     x:"Temple ki veldam, bayata dinner, kotha kotha spots... nee valla naaku enno experiences vachayi 🌟"},
+    {f:"14-lepakshi-trip", e:["🚗","🛕","🌄","📸"], t:"Lepakshi — Mana Last Trip",
+     x:"Mana last trip Lepakshi 🛕 Konni sarlu 'ekkadiki raanu' antav, kani vachaka nuvve ekkuva enjoy chestav 😜"},
+    {f:"15-movies", e:["🎬","🍿","🎟️","😍"], t:"Back to Back Movies",
+     x:"Rendu movies continuous ga chusam 🍿🍿 Ila padipoyam okarikokaru 😍"},
+    {f:"16-ups-downs", e:["📵","😢","🤝","🌦️"], t:"Madhyalo Godavalu",
+     x:"Madhyalo chala godavalu... block cheyyadam, nenu konni rojulu matladakapovadam, nuvvu feel avvadam 😔 Kani prathi sari malli kalisam 🤝"},
+    {f:"17-window-calls", e:["🪟","📞","🌙","💫"], t:"Kitiki Daggara Calls",
+     x:"Nuvvu paina, nenu kinda... kitiki daggara nunchi phone lo matladukovadam 🪟📞 Pure filmy scene 🎬"},
+    {f:"18-office-lunch", e:["🍱","🏢","💕","😌"], t:"Office Daggara Lunch",
+     x:"Godava ayina sare, mee office daggariki vachi kalisi lunch cheyyadam 🍱 Adhi mana rule 😌"},
+    {f:"19-cook-skincare", e:["🍳","🧴","🌙","💆"], t:"Mana Nights",
+     x:"Kalisi night spend cheyyadam, nuvvu cook cheyyadam 🍳, naaku skin care cheyyadam 🧴... Aa care ki nenu full fan 💕"},
+    {f:"20-bus-drop", e:["🚌","💗","🌆","👋"], t:"Mee Bus lo Drop",
+     x:"Mee bus lo ninnu intiki drop cheyyadam 🚌 Adhi oka manchi memory, eppatiki marchipolenu 💗"},
+    {f:"21-this-birthday", e:["🎂","🎈","🎁","🥳"], t:"Ee Birthday Neekosam",
+     x:"Ila ups and downs lo jarigayi mana rojulu 🎢 Last birthday nenu celebrate cheyyalekapoya... kanisam ee birthday ayina special cheddam anukunna. Neeku mood ledu ani telusu, anduke idi chesa 💖"}
+  ],
+  // Random photos: e folder lo enni photos aina pettu, tools/add-photos.bat run cheyyi
+  randoms: [
+    {f:"random-outings",  t:"Bayata Tirigina Rojulu 🛵", s:"Ekkadiki vellina, nuvvu pakkana unte adhe best place 🌍"},
+    {f:"random-sleeping", t:"Nidra Poye Kaja 😴", s:"Shhh... silent ga undu, Madam padukunnaru 🤫 (Ee photos chusi kottaku please 🙏😂)"},
+    {f:"random-working",  t:"Work Mode Kaja 💻", s:"Laptop mundu serious face... kani naaku ade cute 😍"}
+  ],
+  letter: `Happy Birthday ra Kaja! 🎉
+
+Mahesh party lo spoon tho mutton tinadam nunchi ivvala varaku — enni navvulu, enni godavalu, enni magic moments.
+Last birthday nenu celebrate cheyyaleka poya, sorry ra. Anduke ee sari neekosam ee chinna world create chesa.
+
+Nenu perfect kaadu, godavalu avtayi, kani prathi sari malli ninne choose chestanu.
+Ee year neeku anni manchive jaragali, nee dreams anni nijam avvali 🤞
+
+Love you chala chala 💖`
+};
+</script>
+
+<div id="prog"></div>
+<canvas id="cf"></canvas>
+<audio id="bgm" src="music/song.mp3" loop preload="auto"></audio>
+<button id="mus" title="Music">🎵</button>
+
+<div id="lock" data-e="🔒,💗,🗝️,✨">
+  <div class="lock-icon">🔒💗</div>
+  <h2>Hello Kaja Madam 👀</h2>
+  <p>Idhi neeku matrame. Secret code enter cheyyi</p>
+  <div class="dots" id="dots"></div>
+  <div class="pad" id="pad"></div>
+  <p id="msg"></p>
+</div>
+
+<main id="main">
+<section id="hero" data-e="🎉,💖,🎈,🌸,✨" style="--h:335">
+  <div class="pair">
+    <img class="photo" id="herP" alt="Kaja">
+    <span class="h">💞</span>
+    <img class="photo" id="myP" alt="Me">
+  </div>
+  <h1 id="hTitle"></h1>
+  <p id="hLine"></p>
+  <p style="margin-top:30px;opacity:.75">Kindaki scroll cheyyi, mana story cheptha 👇<br><small>(Background emojis meedha tap chesi chudu 😉)</small></p>
+</section>
+<div id="chs"></div>
+<section id="rand" data-e="📸,🤳,😴,💻,🌸" style="--h:300">
+  <h2 class="t">Mana Random Moments 📸</h2>
+  <p>Konni photos story lo fit avvavu... kani prathi okkati naaku special 💕</p>
+  <div id="groups"></div>
+</section>
+<section id="cakeSec" data-e="🎂,🕯️,🎁,🎉" style="--h:20">
+  <h2 class="t">Cake Cutting Time 🎂</h2>
+  <p id="cakeMsg">Mundu kallu moosi oka wish anuko... tarvatha candles meedha tap chesi oodhu 🌬️</p>
+  <div class="cake-wrap" id="cw"><div class="knife">🔪</div><div id="cake"></div></div>
+  <button class="btn" id="cutBtn" style="display:none">Cake Cut Cheyyi 🔪</button>
+</section>
+<section data-e="💌,💕,🌹,💋" style="--h:345">
+  <h2 class="t">Neeku Oka Chinna Letter 💌</h2>
+  <div class="letter" id="letter"></div>
+  <button class="btn" style="margin-top:30px" onclick="boom();this.textContent='Nenu kuda love you 💖💖💖'">I Love You Cheppu 😘</button>
+</section>
+</main>
+<div id="lightbox" onclick="this.style.display='none'"><img id="lbImg" alt=""></div>
+
+<script>
+const $=id=>document.getElementById(id),C=CONFIG,esc=s=>String(s).replace(/[<>&]/g,'');
+const EXT=['jpg','jpeg','png','webp','JPG','PNG'];
+// try photo with multiple extensions
+function loadPh(el,base,fail,i=0){el.onerror=()=>i+1<EXT.length?loadPh(el,base,fail,i+1):fail&&fail();el.src=`${base}.${EXT[i]}`}
+const heart="data:image/svg+xml,"+encodeURIComponent('<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><rect width="100" height="100" fill="#3a1a2b"/><text x="50" y="62" font-size="38" text-anchor="middle">💖</text></svg>');
+
+// interactive emoji background
+function fx(host,list){const d=document.createElement('div');d.className='fx';host.prepend(d);
+  for(let i=0;i<12;i++){const b=document.createElement('b');b.textContent=list[i%list.length];
+    b.style.cssText=`left:${Math.random()*92}%;top:${Math.random()*90}%;--d:${3+Math.random()*4}s;--x:${(Math.random()-.5)*60}px;--y:${(Math.random()-.5)*60}px;font-size:${22+Math.random()*22}px`;
+    b.onclick=e=>{pop(e.clientX,e.clientY,b.textContent);b.classList.add('gone');setTimeout(()=>{b.style.left=Math.random()*92+'%';b.style.top=Math.random()*90+'%';b.classList.remove('gone')},900)};
+    d.appendChild(b)}}
+function pop(x,y,ch){for(let i=0;i<8;i++){const s=document.createElement('span');s.className='spark';s.textContent=ch;s.style.left=x+'px';s.style.top=y+'px';document.body.appendChild(s);
+  const a=Math.PI*2*i/8;requestAnimationFrame(()=>{s.style.transform=`translate(${Math.cos(a)*90}px,${Math.sin(a)*90}px) scale(.4)`;s.style.opacity=0});setTimeout(()=>s.remove(),950)}}
+
+// LOCK
+let code="";const L=C.passcode.length;
+for(let i=0;i<L;i++)$('dots').appendChild(document.createElement('i'));
+[1,2,3,4,5,6,7,8,9,'💡',0,'⌫'].forEach(k=>{const b=document.createElement('button');b.textContent=k;b.onclick=()=>press(String(k));$('pad').appendChild(b)});
+function press(k){
+  if(k==='💡'){$('msg').textContent=C.hint;return}
+  if(k==='⌫')code=code.slice(0,-1);else if(code.length<L)code+=k;
+  [...$('dots').children].forEach((d,i)=>d.classList.toggle('f',i<code.length));
+  if(code.length===L){
+    if(code===C.passcode){$('msg').textContent="Correct ra Kaja! Welcome 🥰";setTimeout(()=>{$('lock').classList.add('open');boom();$('bgm').play().catch(()=>{})},600)}
+    else{$('msg').textContent="Ayyo tappu! Malli try cheyyi 🙈";$('dots').classList.add('shake');setTimeout(()=>{$('dots').classList.remove('shake');code="";[...$('dots').children].forEach(d=>d.classList.remove('f'))},500)}}}
+document.addEventListener('keydown',e=>{if(!$('lock').classList.contains('open')){if(/^\d$/.test(e.key))press(e.key);if(e.key==='Backspace')press('⌫')}});
+
+// music button (only if music/song.mp3 exists)
+$('bgm').addEventListener('canplay',()=>$('mus').style.display='block',{once:true});
+$('mus').onclick=()=>{const a=$('bgm');a.paused?a.play():a.pause();$('mus').textContent=a.paused?'🔇':'🎵'};
+
+// HERO
+[['herP','photos/00-cover/her'],['myP','photos/00-cover/me']].forEach(([id,b])=>loadPh($(id),b,()=>{$(id).src=heart}));
+$('hTitle').textContent=`Happy Birthday ${C.herName} 🎉`;$('hLine').textContent=C.heroLine;document.title=`Happy Birthday ${C.herName}`;
+
+// CHAPTERS
+C.chapters.forEach((c,i)=>{
+  const s=document.createElement('section');s.style.setProperty('--h',(335+i*23)%360);s.dataset.e=c.e.join(',');
+  s.innerHTML=`<div class="wrap ${i%2?'rev':''}"><div class="txt"><span class="num">Chapter ${String(i+1).padStart(2,'0')}</span><h2></h2><p></p><div class="ems"></div></div><div><div class="stack"></div><div class="tap">Photo meedha tap cheyyi 👆 (double tap = pedda ga)</div></div></div>`;
+  s.querySelector('h2').textContent=c.t;s.querySelector('p').textContent=c.x;s.querySelector('.ems').textContent=c.e.join(' ');
+  const st=s.querySelector('.stack');let fails=0;
+  for(let n=1;n<=3;n++){const p=document.createElement('div');p.className='pol';p.innerHTML=`<div class="ph"><img alt=""></div><div class="cap"></div>`;
+    p.querySelector('.cap').textContent=c.t.replace(/[^\w\s',.&—-]/g,'').trim();st.appendChild(p);
+    loadPh(p.querySelector('img'),`photos/${c.f}/${n}`,()=>{p.remove();if(++fails===3){st.innerHTML=`<div class="pol empty"><div class="ph"><span class="big">${esc(c.e.slice(0,3).join(''))}</span><em>Ee moment photo lo ledu,<br>kani naa manasulo full HD lo undi 💭</em></div><div class="cap">${esc(c.t.split('—')[0])}</div></div>`;st.nextElementSibling.style.display='none'}lay(st)})}
+  lay(st);
+  st.onclick=()=>{const top=st.lastElementChild;if(!top||st.children.length<2)return;top.classList.add('fly');setTimeout(()=>{top.classList.remove('fly');st.prepend(top);lay(st)},450)};
+  st.ondblclick=()=>{const im=st.lastElementChild?.querySelector('img');if(im){$('lbImg').src=im.src;$('lightbox').style.display='flex'}};
+  $('chs').appendChild(s)});
+function lay(st){const k=[...st.children],P=[[-8,-14,10],[6,14,4],[-2,0,0]];k.forEach((p,j)=>{const q=P[P.length-k.length+j]||P[2];p.style.transform=`translate(${q[1]}px,${q[2]}px) rotate(${q[0]}deg)`;p.style.zIndex=j})}
+
+// RANDOM MOMENTS: loads 1,2,3... until a number is missing
+let gLeft=C.randoms.length,gFound=0;
+C.randoms.forEach(g=>{const d=document.createElement('div');d.className='grp';d.innerHTML='<h3></h3><p></p><div class="wall"></div>';
+  d.querySelector('h3').textContent=g.t;d.querySelector('p').textContent=g.s;$('groups').appendChild(d);const w=d.querySelector('.wall');
+  (function next(n){const im=new Image();im.alt='';
+    im.onload=()=>{const m=document.createElement('div');m.className='mini';m.style.setProperty('--r',(Math.random()*12-6)+'deg');m.appendChild(im);
+      m.onclick=()=>{$('lbImg').src=im.src;$('lightbox').style.display='flex'};w.appendChild(m);gFound++;next(n+1)};
+    loadPh(im,`photos/${g.f}/${n}`,()=>{if(n===1)d.remove();if(--gLeft===0&&!gFound)$('rand').remove()})})(1)});
+
+// emojis on every page + reveal on scroll
+document.querySelectorAll('[data-e]').forEach(el=>fx(el,el.dataset.e.split(',')));
+const io=new IntersectionObserver(es=>es.forEach(e=>e.isIntersecting&&e.target.classList.add('show')),{threshold:.25});
+document.querySelectorAll('section').forEach(s=>io.observe(s));
+addEventListener('scroll',()=>{$('prog').style.width=(scrollY/(document.body.scrollHeight-innerHeight)*100)+'%'});
+
+// CAKE (candles inside both halves so they split too)
+const half=`<div class="plate"></div><div class="layer l1"><div class="icing"></div><div class="cake-name">${esc(C.herName)}</div></div><div class="layer l2"><div class="icing"></div></div><div class="candles">${'<div class="candle"><div class="flame"></div></div>'.repeat(5)}</div>`;
+$('cake').innerHTML=`<div class="half l">${half}</div><div class="half r">${half}</div>`;
+$('cw').onclick=e=>{if($('cw').classList.contains('out'))return;$('cw').classList.add('out');pop(e.clientX,e.clientY,'💨');
+  $('cakeMsg').textContent="Wish anukunnava? Naaku cheppaku, secret ga unchuko 🤫 Ippudu cake cut cheyyi!";$('cutBtn').style.display='inline-block'};
+$('cutBtn').onclick=()=>{$('cutBtn').style.display='none';$('cw').classList.add('cutting');
+  setTimeout(()=>{$('cake').classList.add('cut');boom();$('cakeMsg').innerHTML="Yayyy! Happy Birthday Kaja 🥳🎂<br>First piece naake ivvali, adhi rule 😋"},700)};
+
+// LETTER
+$('letter').innerHTML=`<span class="script">Dear ${esc(C.herName)},</span>`;$('letter').append(C.letter);
+$('letter').insertAdjacentHTML('beforeend',`<span class="script" style="text-align:right;margin-top:12px">— ${esc(C.myName)} 💕</span>`);
+
+// CONFETTI
+const cv=$('cf'),cx=cv.getContext('2d');let P=[];
+function rs(){cv.width=innerWidth;cv.height=innerHeight}rs();addEventListener('resize',rs);
+function boom(){const run=!P.length;for(let i=0;i<160;i++)P.push({x:innerWidth/2,y:innerHeight/2,vx:(Math.random()-.5)*16,vy:Math.random()*-16-4,c:`hsl(${Math.random()*60+320},90%,65%)`,s:Math.random()*8+4,l:140});if(run)tick()}
+function tick(){cx.clearRect(0,0,cv.width,cv.height);P=P.filter(p=>p.l-->0);P.forEach(p=>{p.vy+=.4;p.x+=p.vx;p.y+=p.vy;cx.fillStyle=p.c;cx.fillRect(p.x,p.y,p.s,p.s*.6)});if(P.length)requestAnimationFrame(tick)}
+</script>
+</body>
+</html>

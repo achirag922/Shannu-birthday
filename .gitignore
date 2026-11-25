@@ -1,0 +1,22 @@
+# Photos / videos / songs never go to GitHub (add them on personal laptop only)
+*.jpg
+*.jpeg
+*.png
+*.webp
+*.gif
+*.heic
+*.heif
+*.mp3
+*.m4a
+*.wav
+*.mp4
+*.mov
+*.JPG
+*.JPEG
+*.PNG
+*.HEIC
+*.MP3
+*.MP4
+*.MOV
+Thumbs.db
+desktop.ini
